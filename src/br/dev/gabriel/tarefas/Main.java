@@ -11,14 +11,10 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		Funcionario funcionario = new Funcionario("André", "Programador", "T.I");
-		Tarefa tarefa = new Tarefa(funcionario);
-		tarefa.setNome("Lavar a louça");
-		tarefa.setDescricao("Lavar a louça antes de eu chegar.");
-		tarefa.setDataInicio(LocalDate.of(2025, 5, 21));
-		tarefa.setPrazo(1);
-		tarefa.getDataPrevistaEntrega();
-		tarefa.setStatus(Status.EM_ANDAMENTO);
+		Funcionario funcionario = new Funcionario("André", "DBA");
+		funcionario.setSetor("Tecnologia da Informação");
+		funcionario.setSalario(12327.89);
+		
 	}
 	
 	private static void testarLeituraEscritaArquivo() {

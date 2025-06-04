@@ -68,11 +68,22 @@ public class Tarefa {
 		
 		LocalDate hoje = LocalDate.now();
 		
-		if(hoje.isAfter(getDataEntrega())) {
+		if(hoje.isBefore(dataEntrega)) {
+			status = Status.NAO_INICIADO;
+			
+		} else if (hoje.equals(dataInicio) && hoje.isBefore(dataEntrega)) {
+			status = Status.EM_ANDAMENTO;
+			
+		} else if (hoje.isAfter(dataInicio)) {
 			status = Status.EM_ATRASO;
+			
+		} else {
+			status = Status.CONCLUIDA;
+			
 		}
 		
 		return status;
+		
 	}
 
 }
