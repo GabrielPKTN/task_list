@@ -3,18 +3,21 @@ package br.dev.gabriel.tarefas;
 import java.io.*;
 import java.time.LocalDate;
 
+import br.dev.gabriel.tarefas.dao.FuncionarioDAO;
 import br.dev.gabriel.tarefas.model.Funcionario;
 import br.dev.gabriel.tarefas.model.Status;
 import br.dev.gabriel.tarefas.model.Tarefa;
+import br.dev.gabriel.tarefas.ui.FuncionarioFrame;
+import br.dev.gabriel.tarefas.ui.FuncionarioListaFrame;
 
 public class Main {
 
 	public static void main(String[] args) {
 		
-		Funcionario funcionario = new Funcionario("André", "DBA");
-		funcionario.setSetor("Tecnologia da Informação");
-		funcionario.setSalario(12327.89);
-		
+//		new FuncionarioFrame();
+		new FuncionarioListaFrame();
+//		FuncionarioDAO dao = new FuncionarioDAO(null);
+//		dao.getFuncionarios();
 	}
 	
 	private static void testarLeituraEscritaArquivo() {

@@ -10,7 +10,7 @@ public class Funcionario {
 	private String setor;
 	private double salario;
 
-	public Funcionario() {
+	public Funcionario(String nome) {
 		System.out.println("Criando um funcionário...");
 		setNome(nome);
 		setMatricula(Utils.gerarUUID8());
