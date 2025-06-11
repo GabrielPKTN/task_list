@@ -15,7 +15,7 @@ public class Main {
 	public static void main(String[] args) {
 		
 //		new FuncionarioFrame();
-		new FuncionarioListaFrame();
+//		new FuncionarioListaFrame();
 //		FuncionarioDAO dao = new FuncionarioDAO(null);
 //		dao.getFuncionarios();
 	}

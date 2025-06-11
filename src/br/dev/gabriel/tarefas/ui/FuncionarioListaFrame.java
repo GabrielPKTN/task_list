@@ -3,6 +3,8 @@ package br.dev.gabriel.tarefas.ui;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,12 +15,13 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import br.dev.gabriel.tarefas.dao.FuncionarioDAO;
 import br.dev.gabriel.tarefas.model.Funcionario;
 
 public class FuncionarioListaFrame {
 	
 	private JLabel labelTitulo;
-	private JButton buttonNovo;
+	private JButton buttonCadastroFuncionario;
 	
 	private DefaultTableModel model; // dados da tabela
 	private JTable tabelaFuncionarios; // visual da tabela
@@ -53,7 +56,22 @@ public class FuncionarioListaFrame {
 		scrollFuncionarios = new JScrollPane(tabelaFuncionarios);
 		scrollFuncionarios.setBounds(10, 70, 680, 300);
 		
+		carregarDadosTabela();
 		
+		buttonCadastroFuncionario = new JButton("Cadastrar novo funcionário");
+		buttonCadastroFuncionario.setBounds(10, 400, 250, 50);
+		
+		buttonCadastroFuncionario.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new FuncionarioFrame(telaFuncionarioLista);
+				carregarDadosTabela();
+				
+			}
+		});
+		
+		painel.add(buttonCadastroFuncionario);
 		painel.add(labelTitulo);
 		painel.add(scrollFuncionarios);
 		
@@ -61,8 +79,10 @@ public class FuncionarioListaFrame {
 	}
 	
 	private void carregarDadosTabela() {
-		
 		List<Funcionario> funcionarios = new ArrayList<>();
+		
+		FuncionarioDAO dao = new FuncionarioDAO(null);
+		funcionarios = dao.getFuncionarios();
 		
 		int i = 0;
 		

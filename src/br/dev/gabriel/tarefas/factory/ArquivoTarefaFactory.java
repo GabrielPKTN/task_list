@@ -6,9 +6,9 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class ArquivoFuncionarioFactory {
+public class ArquivoTarefaFactory {
 
-	private String caminho = "/Users/25132902/eclipse-workspace/task_list/funcionariosTeste.csv";
+	private String caminho = "/Users/25132902/eclipse-workspace/task_list/tarefasTeste.csv";
 	private FileWriter fw;
 	private BufferedWriter bw;
 	private FileReader fr;

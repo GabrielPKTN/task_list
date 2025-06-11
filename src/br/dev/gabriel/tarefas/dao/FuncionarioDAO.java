@@ -48,14 +48,17 @@ public class FuncionarioDAO {
 			
 			while (linha != null) {
 				linha = br.readLine();
-				String[] funcionarioVetor = linha.split(",");
-				Funcionario funcionario = new Funcionario(null);
-				funcionario.setMatricula(funcionarioVetor[0]);
-				funcionario.setNome(funcionarioVetor[1]);
-				funcionario.setCargo(funcionarioVetor[2]);
-				funcionario.setSetor(funcionarioVetor[3]);
-				funcionario.setSalario(Double.parseDouble(funcionarioVetor[4]));
-				funcionarios.add(funcionario);
+				if (linha != null) {
+					String[] funcionarioVetor = linha.split(",");
+					Funcionario funcionario = new Funcionario(null);
+					funcionario.setMatricula(funcionarioVetor[0]);
+					funcionario.setNome(funcionarioVetor[1]);
+					funcionario.setCargo(funcionarioVetor[2]);
+					funcionario.setSetor(funcionarioVetor[3]);
+					funcionario.setSalario(Double.parseDouble(funcionarioVetor[4]));
+					funcionarios.add(funcionario);
+				}
+
 			}
 			
 			return funcionarios;

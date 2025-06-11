@@ -1,9 +1,5 @@
 package br.dev.gabriel.tarefas.ui;
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-
 import br.dev.gabriel.tarefas.dao.FuncionarioDAO;
 import br.dev.gabriel.tarefas.model.Funcionario;
 import br.dev.gabriel.tarefas.utils.Utils;
@@ -32,15 +28,15 @@ public class FuncionarioFrame {
 	private JButton buttonSair;
 	
 	
-	public FuncionarioFrame() {
-		criaTela();
+	public FuncionarioFrame(JFrame pai) {
+		criaTela(pai);
 	}
 	
-	public void criaTela() {
-		JFrame telaFuncionario = new JFrame();
+	public void criaTela(JFrame pai) {
+		JDialog telaFuncionario = new JDialog(pai, true);
 		
 		telaFuncionario.setSize(500, 500);
-		telaFuncionario.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		telaFuncionario.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		telaFuncionario.setLayout(null);
 		telaFuncionario.setResizable(false);
 		telaFuncionario.setLocationRelativeTo(null);
@@ -51,6 +47,7 @@ public class FuncionarioFrame {
 		labelMatricula.setBounds(10, 20, 150, 30);
 		textMatricula = new JTextField();
 		textMatricula.setBounds(10, 50, 150, 30);
+		textMatricula.setEnabled(false);
 		textMatricula.setText(Utils.gerarUUID8());
 		
 		labelNome = new JLabel("Nome: ");
@@ -101,7 +98,7 @@ public class FuncionarioFrame {
 				// TODO Auto-generated method stub
 				Funcionario f = new Funcionario(textNome.getText());
 				f.setMatricula(textMatricula.getText());
-				f.setNome(textMatricula.getText());
+				f.setCargo(textCargo.getText());
 				f.setSetor(textSetor.getText());
 				
 				double salario = Double.parseDouble(textSalario.getText());
@@ -128,9 +125,9 @@ public class FuncionarioFrame {
 				int resposta = JOptionPane.showConfirmDialog(telaFuncionario, "Confirma sair do sistema?", "Atenção!", JOptionPane.YES_NO_OPTION);
 				
 				if (resposta == 0) {
-					System.exit(JFrame.EXIT_ON_CLOSE);
+					
 				}
-				
+				telaFuncionario.dispose();
 			}
 		});
 		
