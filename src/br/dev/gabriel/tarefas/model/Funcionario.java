@@ -17,7 +17,7 @@ public class Funcionario {
 	}
 
 	public Funcionario(String nome, String cargo) {
-		System.out.println("criando um funocionario com nome");
+		System.out.println("criando um funcionario com nome");
 		this.nome = nome;
 		this.cargo = cargo;
 		this.matricula = (Utils.gerarUUID8());

@@ -2,8 +2,14 @@ package br.dev.gabriel.tarefas.dao;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 import br.dev.gabriel.tarefas.factory.ArquivoTarefaFactory;
+import br.dev.gabriel.tarefas.model.Funcionario;
 import br.dev.gabriel.tarefas.model.Tarefa;
 
 public class TarefaDAO {
@@ -28,6 +34,48 @@ public class TarefaDAO {
 			return false;
 			
 		}
+	}
+	public List<Tarefa> getTarefas() {
+		
+		List<Tarefa> tarefas = new ArrayList<Tarefa>();
+		
+		try {
+			BufferedReader br = atf.getBr();
+			
+			String linha = "";
+			
+			while (linha != null) {
+				linha = br.readLine();
+				if (linha != null) {
+					String[] tarefaVetor = linha.split(",");
+					Tarefa tarefa = new Tarefa(null);
+					tarefa.setID(tarefaVetor[0]);
+					tarefa.setNome(tarefaVetor[1]);
+					tarefa.setDescricao(tarefaVetor[2]);
+					
+					String data = tarefaVetor[3];
+					
+					DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+					LocalDate data = LocalDate.parse(data,formatter);
+					
+//					tarefa.setResponsavel(tarefaVetor[3]);
+					
+//					tarefa.setDataInicio(tarefaVetor[4]);
+					tarefa.setPrazo(Integer.parseInt(tarefaVetor[5]));
+//					tarefa.setDataEntrega(tarefaVetor[6]);
+					
+					
+				}
+
+			}
+			
+			return tarefas;
+			
+		} catch (IOException e) {	
+			e.printStackTrace();
+			return null;
+		}
+		
 	}
 	
 }

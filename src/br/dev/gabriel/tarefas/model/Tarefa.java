@@ -2,8 +2,11 @@ package br.dev.gabriel.tarefas.model;
 
 import java.time.LocalDate;
 
+import br.dev.gabriel.tarefas.utils.Utils;
+
 public class Tarefa {
 
+	private String ID;
 	private String nome;
 	private String descricao;
 	private Funcionario responsavel;
@@ -12,8 +15,19 @@ public class Tarefa {
 	private LocalDate dataEntrega;
 	private Status status;
 	
-	public Tarefa(Funcionario responsavel) {
-		this.responsavel = responsavel;
+	public Tarefa(String nome) {
+		System.out.println("Criando Tarefa...");
+		setID(Utils.gerarUUID8());
+		setNome(nome);
+		
+	}
+	
+	public String getID() {
+		return ID;
+	}
+
+	public void setID(String iD) {
+		ID = iD;
 	}
 
 	public String getNome() {
@@ -85,5 +99,11 @@ public class Tarefa {
 		return status;
 		
 	}
+	
+	@Override
+	public String toString() {
+		return ID + "," + nome + "," + descricao + "," + responsavel + "," + dataInicio + "," + prazo + "," + dataEntrega + "," + status; 
+	}
+	
 
 }
