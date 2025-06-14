@@ -13,7 +13,7 @@ public class FuncionarioDAO {
 
 	private Funcionario funcionario;
 	private ArquivoFuncionarioFactory aff = new ArquivoFuncionarioFactory();
-
+	
 	public FuncionarioDAO(Funcionario funcionario) {
 		this.funcionario = funcionario;
 	}

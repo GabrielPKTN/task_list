@@ -2,6 +2,8 @@ package br.dev.gabriel.tarefas;
 
 import java.io.*;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
 
 import br.dev.gabriel.tarefas.dao.FuncionarioDAO;
 import br.dev.gabriel.tarefas.model.Funcionario;
@@ -14,10 +16,28 @@ public class Main {
 
 	public static void main(String[] args) {
 		
+//		String dataString;
+//		
+//		Scanner s = new Scanner(System.in);
+//		System.out.println("Digite a data: ");
+//		
+//		dataString = s.nextLine();
+//		
+//		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+//		LocalDate data = LocalDate.parse(dataString, formatter);
+//		
+//		System.out.println(data);
+//		
+//		s.close();
+		
+		
+		
 //		new FuncionarioFrame();
 //		new FuncionarioListaFrame();
 //		FuncionarioDAO dao = new FuncionarioDAO(null);
 //		dao.getFuncionarios();
+	
+	
 	}
 	
 	private static void testarLeituraEscritaArquivo() {

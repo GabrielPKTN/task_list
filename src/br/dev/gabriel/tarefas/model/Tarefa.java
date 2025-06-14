@@ -1,7 +1,9 @@
 package br.dev.gabriel.tarefas.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
+import br.dev.gabriel.tarefas.dao.FuncionarioDAO;
 import br.dev.gabriel.tarefas.utils.Utils;
 
 public class Tarefa {
@@ -44,6 +46,23 @@ public class Tarefa {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+	
+	public void setResponsavel(String matricula) {
+		
+		FuncionarioDAO dao = new FuncionarioDAO(null);
+		List<Funcionario> listaFuncionario = dao.getFuncionarios();
+		
+		for (Funcionario f : listaFuncionario) {
+			
+			if (f.getMatricula() == matricula) {
+				
+				responsavel = f;
+				
+			}
+			
+		}
+	
 	}
 
 	public Funcionario getResponsavel() {

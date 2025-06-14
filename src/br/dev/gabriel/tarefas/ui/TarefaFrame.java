@@ -13,6 +13,6 @@ public class TarefaFrame {
 	private JTextField textDescricao;
 	
 	private JLabel labelFuncionario;
-	private JComboBox<> boxFuncionario;
+//	private JComboBox<> boxFuncionario;
 	
 }

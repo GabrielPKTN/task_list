@@ -47,24 +47,32 @@ public class TarefaDAO {
 			while (linha != null) {
 				linha = br.readLine();
 				if (linha != null) {
+					
+					FuncionarioDAO daoFuncionario= new FuncionarioDAO(null);
+					
 					String[] tarefaVetor = linha.split(",");
 					Tarefa tarefa = new Tarefa(null);
+					
 					tarefa.setID(tarefaVetor[0]);
 					tarefa.setNome(tarefaVetor[1]);
 					tarefa.setDescricao(tarefaVetor[2]);
+					tarefa.setResponsavel(null);
 					
-					String data = tarefaVetor[3];
 					
-					DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-					LocalDate data = LocalDate.parse(data,formatter);
+					DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+					LocalDate data = LocalDate.parse(tarefaVetor[4], formatter);
 					
-//					tarefa.setResponsavel(tarefaVetor[3]);
+					tarefa.setDataInicio(data);
 					
-//					tarefa.setDataInicio(tarefaVetor[4]);
 					tarefa.setPrazo(Integer.parseInt(tarefaVetor[5]));
-//					tarefa.setDataEntrega(tarefaVetor[6]);
 					
+					LocalDate dataEntregaString = tarefa.getDataPrevistaEntrega();
+					tarefaVetor[6] = dataEntregaString.toString();
+					LocalDate dataEntrega = LocalDate.parse(tarefaVetor[6], formatter);					
 					
+					tarefa.setDataEntrega(dataEntrega);
+					
+					tarefas.add(tarefa);
 				}
 
 			}
