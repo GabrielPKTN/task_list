@@ -28,12 +28,13 @@ public class FuncionarioFrame {
 	private JButton buttonSair;
 	
 	
-	public FuncionarioFrame(JFrame pai) {
+	public FuncionarioFrame(JDialog pai) {
 		criaTela(pai);
 	}
 	
-	public void criaTela(JFrame pai) {
-		JDialog telaFuncionario = new JDialog(pai, true);
+	private void criaTela(JDialog pai) {
+		
+		JDialog telaFuncionario = new JDialog(pai, "Cadastro de Funcionários");
 		
 		telaFuncionario.setSize(500, 500);
 		telaFuncionario.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
