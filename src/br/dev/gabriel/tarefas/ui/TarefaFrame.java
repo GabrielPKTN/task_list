@@ -118,6 +118,8 @@ public class TarefaFrame {
 
 
 		painel.add(buttonSalvar);
-		painel.add(buttonSair);		
+		painel.add(buttonSair);	
+		
+		telaTarefa.setVisible(true);
 	}
 }

@@ -38,7 +38,7 @@ public class FuncionarioListaFrame {
 
 		JDialog telaFuncionarioLista = new JDialog(pai, "Lista de Funcionários");
 		
-		telaFuncionarioLista.setSize(700, 500);
+		telaFuncionarioLista.setSize(715, 500);
 		telaFuncionarioLista.setResizable(false);
 		telaFuncionarioLista.setLayout(null);
 		telaFuncionarioLista.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
