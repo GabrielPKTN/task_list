@@ -11,33 +11,37 @@ import br.dev.gabriel.tarefas.model.Status;
 import br.dev.gabriel.tarefas.model.Tarefa;
 import br.dev.gabriel.tarefas.ui.FuncionarioFrame;
 import br.dev.gabriel.tarefas.ui.FuncionarioListaFrame;
+import br.dev.gabriel.tarefas.ui.MainFrame;
 
 public class Main {
 
 	public static void main(String[] args) {
 		
-//		String dataString;
-//		
-//		Scanner s = new Scanner(System.in);
-//		System.out.println("Digite a data: ");
-//		
-//		dataString = s.nextLine();
-//		
-//		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-//		LocalDate data = LocalDate.parse(dataString, formatter);
-//		
-//		System.out.println(data);
-//		
-//		s.close();
 		
-		
-		
+		new MainFrame();
 //		new FuncionarioFrame();
 //		new FuncionarioListaFrame();
 //		FuncionarioDAO dao = new FuncionarioDAO(null);
 //		dao.getFuncionarios();
 	
+	}
 	
+	private static void testarFormataçãoData() {
+		
+		String dataString;
+		
+		Scanner s = new Scanner(System.in);
+		System.out.println("Digite a data: ");
+		
+		dataString = s.nextLine();
+		
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		LocalDate data = LocalDate.parse(dataString, formatter);
+		
+		System.out.println(data);
+		
+		s.close();
+		
 	}
 	
 	private static void testarLeituraEscritaArquivo() {
