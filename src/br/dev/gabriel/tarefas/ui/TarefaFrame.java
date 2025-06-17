@@ -1,18 +1,120 @@
 package br.dev.gabriel.tarefas.ui;
 
+import java.awt.Container;
+
+import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import br.dev.gabriel.tarefas.dao.FuncionarioDAO;
+import br.dev.gabriel.tarefas.model.Funcionario;
+import br.dev.gabriel.tarefas.utils.Utils;
+
 public class TarefaFrame {
 
+	private JLabel labelID;
+	private JTextField textID;
+	
 	private JLabel labelNome;
 	private JTextField textNome;
 	
 	private JLabel labelDescricao;
 	private JTextField textDescricao;
 	
-	private JLabel labelFuncionario;
-//	private JComboBox<> boxFuncionario;
+	private JLabel labelResponsavel;
+	private JComboBox<String> boxResponsavel;
 	
+	// O status precisa ser adicionado automaticamente
+	// isso é feito para evitar que o sistema tenha falhas
+	// como definir o status de uma tarefa como atrasada dentro
+	// do prazo.
+	
+	private JLabel labelDataInicio;
+	private JTextField textDataInicio;
+	
+	private JLabel labelPrazo;
+	private JTextField textPrazo;
+	
+	private JLabel labelDataEntrega;
+	private JTextField textDataEntrega;
+	
+	private JButton buttonSalvar;
+	
+	public TarefaFrame(JDialog pai) {
+		criarTela(pai);
+	}
+	
+	private void criarTela(JDialog pai) {
+		JDialog telaTarefa = new JDialog(pai , "Cadastro de Tarefas", true);
+		
+		telaTarefa.setSize(500, 550);
+		telaTarefa.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		telaTarefa.setLayout(null);
+		telaTarefa.setResizable(false);
+		telaTarefa.setLocationRelativeTo(null);
+		
+		Container painel = telaTarefa.getContentPane();
+		
+		labelID = new JLabel("ID da tarefa: ");
+		labelID.setBounds(10, 20, 150, 30);
+		textID = new JTextField();
+		textID.setBounds(10, 50, 150, 30);
+		textID.setEnabled(false);
+		textID.setText(Utils.gerarUUID8());
+		
+		labelNome = new JLabel("Nome da tarefa: ");
+		labelNome.setBounds(10, 85, 150, 30);
+		textNome = new JTextField();
+		textNome.setBounds(10, 115, 350, 30);
+		
+		labelDescricao = new JLabel("Descrição: ");
+		labelDescricao.setBounds(10, 150, 150, 30);
+		textDescricao = new JTextField();
+		textDescricao.setBounds(10, 180, 150, 30);
+		
+		labelResponsavel = new JLabel("Responsavel pela tarefa: ");
+		labelResponsavel.setBounds(10, 215, 150, 30);
+		boxResponsavel = new JComboBox<String>();
+		boxResponsavel.setBounds(10, 245, 150, 30);
+		
+		labelDataInicio = new JLabel("Data de Início: ");
+		labelDataInicio.setBounds(10, 280, 100, 30);
+		textDataInicio = new JTextField();
+		textDataInicio.setBounds(10, 310, 70, 30);
+		
+		labelPrazo = new JLabel("Prazo: ");
+		labelPrazo.setBounds(110, 280, 150, 30);
+		textPrazo = new JTextField();
+		textPrazo.setBounds(110, 310, 50, 30);
+		
+		labelDataEntrega = new JLabel("Data de Entrega: ");
+		labelDataEntrega.setBounds(10, 340, 150, 30);
+		textDataEntrega = new JTextField();
+		textDataEntrega.setBounds(10, 370, 150, 30);
+		
+		buttonSalvar = new JButton("Salvar");
+		buttonSalvar.setBounds(10, 430, 200, 40);
+		
+		
+		painel.add(labelID);
+		painel.add(textID);
+		painel.add(labelNome);
+		painel.add(textNome);
+		painel.add(labelDescricao);
+		painel.add(textDescricao);
+		painel.add(labelResponsavel);
+		painel.add(boxResponsavel);
+		painel.add(labelDataInicio);
+		painel.add(textDataInicio);
+		painel.add(labelPrazo);
+		painel.add(textPrazo);
+		painel.add(labelDataEntrega);
+		painel.add(textDataEntrega);
+		painel.add(buttonSalvar);
+		
+		telaTarefa.setVisible(true);
+	}
 }

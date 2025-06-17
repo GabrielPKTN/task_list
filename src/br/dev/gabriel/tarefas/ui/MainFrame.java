@@ -1,6 +1,8 @@
 package br.dev.gabriel.tarefas.ui;
 
 import java.awt.Container;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -40,6 +42,15 @@ public class MainFrame {
 		painel.add(labelTelaInicial);
 		painel.add(buttonListaFuncionarios);
 		painel.add(buttonListaTarefas);
+		
+		buttonListaTarefas.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new TarefaListaFrame(telaPrincipal);
+				
+			}
+		});
 		
 		telaPrincipal.setVisible(true);
 	}
