@@ -1,6 +1,10 @@
 package br.dev.gabriel.tarefas.ui;
 
+import java.awt.Component;
 import java.awt.Container;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -8,10 +12,13 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 import br.dev.gabriel.tarefas.dao.FuncionarioDAO;
 import br.dev.gabriel.tarefas.dao.TarefaDAO;
 import br.dev.gabriel.tarefas.model.Funcionario;
+import br.dev.gabriel.tarefas.model.Tarefa;
 import br.dev.gabriel.tarefas.utils.Utils;
 
 public class TarefaFrame {
@@ -81,10 +88,7 @@ public class TarefaFrame {
 		boxResponsavel = new JComboBox<String>();
 		boxResponsavel.setBounds(10, 245, 150, 30);
 		
-		TarefaDAO dao = new TarefaDAO(null);
-		
-		
-		for (String nome : )
+		setElementosComboBox();
 		
 		labelDataInicio = new JLabel("Data de Início: ");
 		labelDataInicio.setBounds(10, 280, 100, 30);
@@ -100,10 +104,10 @@ public class TarefaFrame {
 		labelDataEntrega.setBounds(10, 340, 150, 30);
 		textDataEntrega = new JTextField();
 		textDataEntrega.setBounds(10, 370, 150, 30);
+		textDataEntrega.setEnabled(false);
 		
 		buttonSalvar = new JButton("Salvar");
 		buttonSalvar.setBounds(10, 430, 200, 40);
-		
 		
 		painel.add(labelID);
 		painel.add(textID);
@@ -121,6 +125,52 @@ public class TarefaFrame {
 		painel.add(textDataEntrega);
 		painel.add(buttonSalvar);
 		
+		textPrazo.getDocument().addDocumentListener(new DocumentListener() {
+			
+			@Override
+			public void removeUpdate(DocumentEvent e) {
+				setDataEntrega();
+				
+			}
+			
+			@Override
+			public void insertUpdate(DocumentEvent e) {
+				setDataEntrega();
+				
+			}
+			
+			@Override
+			public void changedUpdate(DocumentEvent e) {
+				setDataEntrega();
+				
+			}
+			
+			private void setDataEntrega() {
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+				String dataInicioString = textDataInicio.getText();
+				
+				LocalDate dataInicio = LocalDate.parse(dataInicioString, formatter);
+				int prazo = Integer.parseInt(textPrazo.getText());
+				
+				LocalDate dataEntregaLocalDate = dataInicio.plusDays(prazo);
+				
+				DateTimeFormatter formatterString = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+				String dataEntregaFormatada = dataEntregaLocalDate.format(formatterString);
+				
+				textDataEntrega.setText(dataEntregaFormatada);
+			}
+		});
+		
 		telaTarefa.setVisible(true);
+	}
+	
+	private void setElementosComboBox() {
+		FuncionarioDAO dao = new FuncionarioDAO(null);
+		
+		List<String> listaNomeFuncionarios = dao.getFuncionariosNomes();
+		
+		for (String nome : listaNomeFuncionarios) {
+			boxResponsavel.addItem(nome);
+		}
 	}
 }
