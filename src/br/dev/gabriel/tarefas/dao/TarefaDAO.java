@@ -48,16 +48,13 @@ public class TarefaDAO {
 				linha = br.readLine();
 				if (linha != null) {
 					
-					FuncionarioDAO daoFuncionario= new FuncionarioDAO(null);
-					
 					String[] tarefaVetor = linha.split(",");
 					Tarefa tarefa = new Tarefa(null);
 					
 					tarefa.setID(tarefaVetor[0]);
 					tarefa.setNome(tarefaVetor[1]);
 					tarefa.setDescricao(tarefaVetor[2]);
-					tarefa.setResponsavel(null);
-					
+					tarefa.setResponsavelByName(tarefaVetor[3]);
 					
 					DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 					LocalDate data = LocalDate.parse(tarefaVetor[4], formatter);

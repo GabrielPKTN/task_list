@@ -1,5 +1,6 @@
 package br.dev.gabriel.tarefas.model;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -16,14 +17,14 @@ public class Tarefa {
 	private int prazo;
 	private LocalDate dataEntrega;
 	private Status status;
-	
+
 	public Tarefa(String nome) {
 		System.out.println("Criando Tarefa...");
 		setID(Utils.gerarUUID8());
 		setNome(nome);
-		
+
 	}
-	
+
 	public String getID() {
 		return ID;
 	}
@@ -47,23 +48,21 @@ public class Tarefa {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	
-	public void setResponsavel(String matricula) {
+
+	public void setResponsavelByName(String nome) {
 		
 		FuncionarioDAO dao = new FuncionarioDAO(null);
-		List<Funcionario> listaFuncionario = dao.getFuncionarios();
-		
-		for (Funcionario f : listaFuncionario) {
+
+		for (Funcionario f : dao.getFuncionarios()) {
 			
-			if (f.getMatricula() == matricula) {
-				
+			if (f.getNome().equalsIgnoreCase(nome)) {
 				responsavel = f;
-				
+				System.out.println(f);
 			}
 			
 		}
-	
 	}
+
 
 	public Funcionario getResponsavel() {
 		return responsavel;
@@ -98,31 +97,31 @@ public class Tarefa {
 	}
 
 	public Status getStatus() {
-		
+
 		LocalDate hoje = LocalDate.now();
-		
-		if(hoje.isBefore(dataEntrega)) {
+
+		if (hoje.isBefore(dataEntrega)) {
 			status = Status.NAO_INICIADO;
-			
+
 		} else if (hoje.equals(dataInicio) && hoje.isBefore(dataEntrega)) {
 			status = Status.EM_ANDAMENTO;
-			
+
 		} else if (hoje.isAfter(dataInicio)) {
 			status = Status.EM_ATRASO;
-			
+
 		} else {
 			status = Status.CONCLUIDA;
-			
+
 		}
-		
+
 		return status;
-		
+
 	}
-	
+
 	@Override
 	public String toString() {
-		return ID + "," + nome + "," + descricao + "," + responsavel + "," + dataInicio + "," + prazo + "," + dataEntrega + "," + status; 
+		return ID + "," + nome + "," + descricao + "," + responsavel + "," + dataInicio + "," + prazo + ","
+				+ dataEntrega + "," + status;
 	}
-	
 
 }
