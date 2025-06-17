@@ -40,7 +40,7 @@ public class TarefaListaFrame {
 
 		Container painel = telaTarefaLista.getContentPane();
 
-		labelTitulo = new JLabel("Cadastro de Funcionários");
+		labelTitulo = new JLabel("Cadastro de Tarefas");
 		labelTitulo.setBounds(10, 10, 500, 40);
 		labelTitulo.setFont(new Font("Arial", Font.BOLD, 32));
 		labelTitulo.setForeground(Color.RED);
@@ -50,7 +50,7 @@ public class TarefaListaFrame {
 		scrollTarefas = new JScrollPane(tabelaTarefas);
 		scrollTarefas.setBounds(10, 70, 680, 300);
 
-		buttonCadastroTarefa = new JButton("Cadastrar novo funcionário");
+		buttonCadastroTarefa = new JButton("Cadastrar nova Tarefa");
 		buttonCadastroTarefa.setBounds(10, 400, 250, 50);
 
 		buttonCadastroTarefa.addActionListener(new ActionListener() {
@@ -58,7 +58,6 @@ public class TarefaListaFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				new TarefaFrame(telaTarefaLista);
-
 			}
 		});
 
@@ -67,6 +66,7 @@ public class TarefaListaFrame {
 		painel.add(buttonCadastroTarefa);
 
 		telaTarefaLista.setVisible(true);
+		
 
 	}
 }

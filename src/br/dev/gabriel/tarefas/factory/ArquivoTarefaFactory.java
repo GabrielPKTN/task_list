@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class ArquivoTarefaFactory {
 
-	private String caminho = "/Users/25132902/eclipse-workspace/task_list/tarefasTeste.csv";
+	private String caminho = "C:\\Users\\gabri\\eclipse-workspace\\task_list\\tarefasTeste.csv";
 	private FileWriter fw;
 	private BufferedWriter bw;
 	private FileReader fr;
