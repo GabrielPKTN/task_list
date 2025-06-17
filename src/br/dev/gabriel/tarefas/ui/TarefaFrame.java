@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import br.dev.gabriel.tarefas.dao.FuncionarioDAO;
+import br.dev.gabriel.tarefas.dao.TarefaDAO;
 import br.dev.gabriel.tarefas.model.Funcionario;
 import br.dev.gabriel.tarefas.utils.Utils;
 
@@ -79,6 +80,11 @@ public class TarefaFrame {
 		labelResponsavel.setBounds(10, 215, 150, 30);
 		boxResponsavel = new JComboBox<String>();
 		boxResponsavel.setBounds(10, 245, 150, 30);
+		
+		TarefaDAO dao = new TarefaDAO(null);
+		
+		
+		for (String nome : )
 		
 		labelDataInicio = new JLabel("Data de Início: ");
 		labelDataInicio.setBounds(10, 280, 100, 30);
