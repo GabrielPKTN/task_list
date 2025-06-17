@@ -52,6 +52,16 @@ public class MainFrame {
 			}
 		});
 		
+		buttonListaFuncionarios.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				new FuncionarioListaFrame(telaPrincipal);
+				
+			}
+		});
+		
 		telaPrincipal.setVisible(true);
 	}
 	
