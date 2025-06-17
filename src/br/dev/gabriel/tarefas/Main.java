@@ -11,13 +11,14 @@ import br.dev.gabriel.tarefas.model.Status;
 import br.dev.gabriel.tarefas.model.Tarefa;
 import br.dev.gabriel.tarefas.ui.FuncionarioFrame;
 import br.dev.gabriel.tarefas.ui.FuncionarioListaFrame;
+import br.dev.gabriel.tarefas.ui.MainFrame;
 import br.dev.gabriel.tarefas.ui.TarefaListaFrame;
 
 public class Main {
 
 	public static void main(String[] args) {
 	
-	new TarefaListaFrame();
+		new MainFrame();
 		
 	}
 	
