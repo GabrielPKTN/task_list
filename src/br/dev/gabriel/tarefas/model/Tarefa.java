@@ -12,7 +12,7 @@ public class Tarefa {
 	private String ID;
 	private String nome;
 	private String descricao;
-	private Funcionario responsavel;
+	private String responsavel;
 	private LocalDate dataInicio;
 	private int prazo;
 	private LocalDate dataEntrega;
@@ -56,15 +56,13 @@ public class Tarefa {
 		for (Funcionario f : dao.getFuncionarios()) {
 			
 			if (f.getNome().equalsIgnoreCase(nome)) {
-				responsavel = f;
-				System.out.println(f);
+				responsavel = f.getNome();		
+				}
 			}
-			
-		}
 	}
 
 
-	public Funcionario getResponsavel() {
+	public String getResponsavel() {
 		return responsavel;
 	}
 
@@ -121,7 +119,7 @@ public class Tarefa {
 	@Override
 	public String toString() {
 		return ID + "," + nome + "," + descricao + "," + responsavel + "," + dataInicio + "," + prazo + ","
-				+ dataEntrega + "," + status;
+				+ dataEntrega + "," + status + "\n";
 	}
 
 }

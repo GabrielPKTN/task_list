@@ -56,7 +56,7 @@ public class TarefaDAO {
 					tarefa.setDescricao(tarefaVetor[2]);
 					tarefa.setResponsavelByName(tarefaVetor[3]);
 					
-					DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+					DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 					LocalDate data = LocalDate.parse(tarefaVetor[4], formatter);
 					
 					tarefa.setDataInicio(data);

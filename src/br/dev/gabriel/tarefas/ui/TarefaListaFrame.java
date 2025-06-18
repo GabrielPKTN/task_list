@@ -5,6 +5,8 @@ import java.awt.Container;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -13,6 +15,11 @@ import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
+import br.dev.gabriel.tarefas.dao.FuncionarioDAO;
+import br.dev.gabriel.tarefas.dao.TarefaDAO;
+import br.dev.gabriel.tarefas.model.Funcionario;
+import br.dev.gabriel.tarefas.model.Tarefa;
 
 public class TarefaListaFrame {
 
@@ -50,6 +57,8 @@ public class TarefaListaFrame {
 		scrollTarefas = new JScrollPane(tabelaTarefas);
 		scrollTarefas.setBounds(10, 70, 680, 300);
 
+		carregarDadosTabela();
+		
 		buttonCadastroTarefa = new JButton("Cadastrar nova Tarefa");
 		buttonCadastroTarefa.setBounds(10, 400, 250, 50);
 
@@ -58,6 +67,7 @@ public class TarefaListaFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				new TarefaFrame(telaTarefaLista);
+				carregarDadosTabela();
 			}
 		});
 
@@ -66,7 +76,28 @@ public class TarefaListaFrame {
 		painel.add(buttonCadastroTarefa);
 
 		telaTarefaLista.setVisible(true);
-		
+	}
 
+	private void carregarDadosTabela() {
+		List<Tarefa> tarefas = new ArrayList<>();
+
+		TarefaDAO dao = new TarefaDAO(null);
+		tarefas = dao.getTarefas();
+
+		int i = 0;
+
+		Object[][] dados = new Object[tarefas.size()][6];
+
+		for (Tarefa t : tarefas) {
+			dados[i][0] = t.getID();
+			dados[i][1] = t.getNome();
+			dados[i][2] = t.getResponsavel();
+			dados[i][3] = t.getStatus();
+			dados[i][4] = t.getDataInicio();
+			dados[i][5] = t.getDataEntrega();
+			i++;
+		}
+
+		model.setDataVector(dados, colunas);
 	}
 }
